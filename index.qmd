@@ -1,0 +1,158 @@
+---
+title: "Pengaruh Ekspor Gas terhadap GDP Indonesia"
+subtitle: "Metode Penelitian Politeknik APP Jakarta"
+author: "Frans Yoel Rolos"
+date: 2024-01-23
+number-sections: true
+format:
+  html: default
+  docx: default
+---
+
+![](poltekapp.jpg){width="320"}
+
+## Pendahuluan
+
+### Latar belakang
+
+Pertumbuhan ekonomi merupakan salah satu tolok ukur penting kemajuan
+suatu negara. Indonesia, sebagai negara dengan sumber daya alam
+melimpah, termasuk gas alam, terus mencari cara untuk mengoptimalkan
+potensi tersebut demi mempercepat laju pertumbuhan ekonominya. Ekspor
+gas menjadi salah satu sektor andalan dalam upaya ini. Penelitian ini
+menggunakan data time series dari Badan Pusat Statistik (BPS) untuk
+periode 2013-2022. Data yang digunakan meliputi nilai ekspor gas (X1),
+nilai PDB (Y) Metode yang digunakan adalah regresi linear. Regresi
+linear digunakan untuk menganalisis pengaruh dua variabel independen
+terhadap variabel dependen.
+
+### Ruang lingkup
+
+Ruang lingkup pembahasan masalah sesuai dengan variabel yang akan
+digunakan pada analisi kali ini, yaitu mengenai pengaruh ekspor Gas
+terhadap PDB Indonesia dalam 10 Tahun terkait. Keterangan • Y = PDB • X1
+= Ekspor gas
+
+### Rumusan masalah
+
+Apakah terdapat pengaruh ekspor gas terhadap pertumbuhan ekonomi
+Indonesia?
+
+### Tujuan dan manfaat penelitian
+
+Tujuan penelitian ini untuk mengetahui seberapa pengaruh ekspor gas
+terhadap ekonomi Indonesia pada Tahun terkait dan memberikan landasan
+teoritis yang kuat bagi penelitian, serta untuk mengidentifikasi peluang
+dan tantangan penelitian. Manfaat penelitian ini agar Masyarakat
+mengetahui pengaruh ekspor gas dalam pertumbuhan ekonomi Indonesia dan
+manfaat komoditi gas pada ekonomi Indonesia
+
+### Package
+
+```{r}
+library(tidyverse)
+library(readxl)
+```
+
+## Studi pustaka
+
+Menurut Anggraini (2020) menganalisis pengaruh ekspor gas terhadap
+pertumbuhan ekonomi Indonesia dengan menggunakan data panel. Hasil
+penelitiannya menunjukkan bahwa ekspor gas memiliki pengaruh positif dan
+signifikan terhadap pertumbuhan ekonomi Indonesia.
+
+## Metode penelitian
+
+### Data
+
+|       |             |                     |
+|-------|-------------|---------------------|
+|       |             |                     |
+| Tahun | EksporGas   | Gdp                 |
+|       |             |                     |
+| 2013  | 18129.2     | 912,524,136,718     |
+|       |             |                     |
+| 2014  | 17180.3     | 890,814,755,533.5   |
+|       |             |                     |
+| 2015  | 10340.8     | 860,854,232,686.2   |
+|       |             |                     |
+| 2016  | 7036.8      | 931,877,364,037.7   |
+|       |             |                     |
+| 2017  | 8746.5      | 1,015,618,744,159.7 |
+|       |             |                     |
+| 2018  | 10377.3     | 1,042,271,532,988.6 |
+|       |             |                     |
+| 2019  | 8261.1      | 1,119,099,871,350.2 |
+|       |             |                     |
+| 2020  | 5397.681896 | 1,059,054,842,698.5 |
+|       |             |                     |
+| 2021  | 7454.7      | 1,186,505,455,736.5 |
+|       |             |                     |
+| 2022  | 9738        | 1,139,100,220,407.7 |
+|       |             |                     |
+
+Penelitian ini menggunakan data nilai ekspor Gas pada tahun 2013 - 2022
+dari Badan Pusat Statistik (BPS) dan GDP Indonesia menggunakan data dari
+WorldBank.
+
+```{r}
+library(readxl)
+Nilai_Ekspor_Gas_dan_GDP<-read_excel("C:/Frans/UAS/Nilai Ekspor Gas dan GDP.xlsx")
+head(Nilai_Ekspor_Gas_dan_GDP)
+library("ggplot2")
+library("readxl")
+library("dplyr")
+ggplot(data=Nilai_Ekspor_Gas_dan_GDP,aes(x=EksporGas,y=Gdp)) +
+  geom_point(color="blue",size=2) + # setiap nambah command, selalu kasih tanda +
+  labs(title="tabel 1. Hubungan Antara Nilai Ekspor Gas terhadap GDP Indonesia",
+       x="Nilai Ekspor Gas",
+       y="GDP Indonesia",
+       caption = "sumber: Worldbank , BPS") +
+  theme_classic()
+```
+
+### Metode analisis
+
+Metode yang dipilih adalah regresi univariat atau Ordinary Least Square
+(OLS) dengan 1 variabel independen. Penelitian ini merbaksud mencari
+hubungan antara Ekspor Gas(EG) dan Manfaat Ekonomi Indonesia(MEI).
+Spesifikasi yang dilakukan adalah:
+
+$$
+y_{t}=\beta_0 + \beta_1 x_t+\mu_t
+$$ di mana $y_t$ adalah (EG) dan $x_t$ adalah (MEI).
+
+## Pembahasan
+
+### Pembahasan masalah
+
+penelitian ini hanya mempertimbangkan pengaruh ekspor gas secara
+agregat. Pengaruh ekspor gas terhadap pertumbuhan ekonomi mungkin
+berbeda-beda antar sektor industri atau wilayah geografis.
+
+Hasil regresinya adalah
+
+```{r}
+dat<-read_excel("C:/Frans/UAS/Nilai Ekspor Gas dan GDP.xlsx")
+reg<-lm(data = dat,Gdp~EksporGas)
+summary(reg)
+```
+
+## Kesimpulan
+
+Dari hasil regresi dapat dilihat bahwa Ekspor gas menurun setiap
+tahunnya -1.501.000.000%. dari hasil kesimpulan tersebut dapat
+disimpulkan bahwa Ekspor Gas kurang mempengaruhi untuk Ekonomi Indonesia
+
+## Referensi
+
+-   **Alamsyah et al. (2016)** menganalisis pengaruh ekspor gas dan
+    ekspor minyak terhadap pertumbuhan ekonomi Indonesia. Hasil
+    penelitian mereka menunjukkan bahwa ekspor gas memiliki pengaruh
+    positif dan signifikan terhadap pertumbuhan ekonomi, sedangkan
+    ekspor minyak memiliki pengaruh negatif dan tidak signifikan.
+
+-   **Suwarno (2017)** menganalisis pengaruh ekspor gas terhadap
+    pertumbuhan ekonomi Indonesia dengan menggunakan metode Granger
+    causality. Hasil penelitiannya menunjukkan bahwa ekspor gas
+    merupakan penyebab terjadinya pertumbuhan ekonomi Indonesia.
